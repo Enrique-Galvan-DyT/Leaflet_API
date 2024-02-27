@@ -1,0 +1,37 @@
+<div class="container">
+    <h3 class="text-center text-muted my-4">LEAFLET MAP API</h3>
+    <div id="map"></div>
+
+</div>
+
+<script>
+    var map = L.map('map').setView([26.049547, -98.269111], 15);
+    
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    var marker = L.marker([26.050782, -98.271243]).addTo(map);
+
+    var circle = L.circle([26.049384, -98.269145], {
+        color: 'hotpink',
+        fillColor: 'pink',
+        fillOpacity: .5,
+        radius: 10
+    }).addTo(map);
+    
+    var polygon = L.polygon([
+        [26.047493, -98.267218],
+        [26.049759, -98.264806],
+        [26.052533, -98.265190],
+        [26.053283, -98.269841],
+        [26.050998, -98.271988],
+        [26.047133, -98.271109],
+        [26.044566, -98.271020]
+    ]).addTo(map);
+
+    marker.bindPopup("<b>Aquí es la Piramide!</b><br>Soy un mensaje de marca.").openPopup();
+    circle.bindPopup("Soy la fuente.");
+    polygon.bindPopup("Soy el parque cultural.");
+</script>
